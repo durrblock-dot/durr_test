@@ -1,46 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Binding of Isaac Flash</title>
-
-<!-- Use local ruffle.js -->
 <script src="ruffle.js"></script>
-
 <style>
-body{
-  background:#000;
-  margin:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  font-family:Arial;
-}
-
-#game{
-  width:640px;
-  height:480px;
-}
+  body {
+    margin: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  #game {
+    width: 640px;
+    height: 480px;
+  }
 </style>
-
 </head>
-
 <body>
 
 <div id="game"></div>
 
 <script>
-window.addEventListener("DOMContentLoaded", () => {
-    if (window.RufflePlayer) {
-        const ruffle = window.RufflePlayer.newest();
-        const player = ruffle.createPlayer();
-        document.getElementById("game").appendChild(player);
-        player.load("isaac_game.swf");  // <-- Must match the SWF filename
-    } else {
-        console.error("RufflePlayer not loaded");
-    }
-});
+  // Create Ruffle instance and load SWF
+  const ruffle = window.RufflePlayer.newest();
+  const player = ruffle.createPlayer();
+  document.getElementById("game").appendChild(player);
+  player.load("isaac_game.swf"); // must match SWF filename
 </script>
 
 </body>
