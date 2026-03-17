@@ -4,22 +4,23 @@
 <meta charset="UTF-8">
 <title>Binding of Isaac Flash</title>
 
-<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+<!-- Use local ruffle.js -->
+<script src="ruffle.js"></script>
 
 <style>
 body{
-background:#000;
-margin:0;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-font-family:Arial;
+  background:#000;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  font-family:Arial;
 }
 
 #game{
-width:640px;
-height:480px;
+  width:640px;
+  height:480px;
 }
 </style>
 
@@ -30,19 +31,16 @@ height:480px;
 <div id="game"></div>
 
 <script>
-
-window.RufflePlayer = window.RufflePlayer || {};
-window.addEventListener("load", () => {
-
-const ruffle = window.RufflePlayer.newest();
-const player = ruffle.createPlayer();
-
-document.getElementById("game").appendChild(player);
-
-player.load("isaac_game.swf");
-
+window.addEventListener("DOMContentLoaded", () => {
+    if (window.RufflePlayer) {
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        document.getElementById("game").appendChild(player);
+        player.load("isaac_game.swf");  // <-- Must match the SWF filename
+    } else {
+        console.error("RufflePlayer not loaded");
+    }
 });
-
 </script>
 
 </body>
